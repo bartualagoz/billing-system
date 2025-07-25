@@ -2,6 +2,7 @@ package com.customer.billing.prototype.controller;
 
 import com.customer.billing.prototype.dto.AccountRequestDTO;
 import com.customer.billing.prototype.dto.AccountUpdateDTO;
+import com.customer.billing.prototype.dto.BillingAccountDTO;
 import com.customer.billing.prototype.model.BillingAccount;
 import com.customer.billing.prototype.model.BillingAddress;
 import com.customer.billing.prototype.model.Customer;
@@ -13,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/accounts")
@@ -30,19 +32,27 @@ public class BillingAccountController {
         this.addressRepository = addressRepository;
     }
 
+    // Return safe DTO instead of entity
     @GetMapping("/{id}")
-    public ResponseEntity<BillingAccount> getAccountById(@PathVariable Integer id) {
+    public ResponseEntity<BillingAccountDTO> getAccountById(@PathVariable Integer id) {
         try {
             BillingAccount account = accountService.getAccountById(id);
-            return ResponseEntity.ok(account);
+            BillingAccountDTO dto = new BillingAccountDTO(account);
+            return ResponseEntity.ok(dto);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }
     }
 
+    // Return list of safe DTOs instead of entities
     @GetMapping
-    public ResponseEntity<List<BillingAccount>> getAllAccounts() {
-        return ResponseEntity.ok(accountService.getAllAccounts());
+    public ResponseEntity<List<BillingAccountDTO>> getAllAccounts() {
+        List<BillingAccountDTO> dtos = accountService.getAllAccounts()
+                .stream()
+                .map(BillingAccountDTO::new)
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(dtos);
     }
 
     @PostMapping
