@@ -233,14 +233,14 @@ const inputBody = '{
         "username": "string",
         "password": "string",
         "enabled": true,
-        "accountNonExpired": true,
-        "credentialsNonExpired": true,
         "authorities": [
           {
             "authority": "string"
           }
         ],
-        "accountNonLocked": true
+        "accountNonLocked": true,
+        "credentialsNonExpired": true,
+        "accountNonExpired": true
       },
       "id": 0
     },
@@ -410,14 +410,14 @@ func main() {
         "username": "string",
         "password": "string",
         "enabled": true,
-        "accountNonExpired": true,
-        "credentialsNonExpired": true,
         "authorities": [
           {
             "authority": "string"
           }
         ],
-        "accountNonLocked": true
+        "accountNonLocked": true,
+        "credentialsNonExpired": true,
+        "accountNonExpired": true
       },
       "id": 0
     },
@@ -777,11 +777,11 @@ Status Code **200**
 |»»»» username|string|false|none|none|
 |»»»» password|string|false|none|none|
 |»»»» enabled|boolean|false|none|none|
-|»»»» accountNonExpired|boolean|false|none|none|
-|»»»» credentialsNonExpired|boolean|false|none|none|
 |»»»» authorities|[[GrantedAuthority](#schemagrantedauthority)]|false|none|none|
 |»»»»» authority|string|false|none|none|
 |»»»» accountNonLocked|boolean|false|none|none|
+|»»»» credentialsNonExpired|boolean|false|none|none|
+|»»»» accountNonExpired|boolean|false|none|none|
 |»»» id|integer(int32)|false|none|none|
 |»» address|[BillingAddress](#schemabillingaddress)|false|none|none|
 |»»» id|integer(int32)|false|none|none|
@@ -838,14 +838,14 @@ const inputBody = '{
         "username": "string",
         "password": "string",
         "enabled": true,
-        "accountNonExpired": true,
-        "credentialsNonExpired": true,
         "authorities": [
           {
             "authority": "string"
           }
         ],
-        "accountNonLocked": true
+        "accountNonLocked": true,
+        "credentialsNonExpired": true,
+        "accountNonExpired": true
       },
       "id": 0
     },
@@ -1015,14 +1015,14 @@ func main() {
         "username": "string",
         "password": "string",
         "enabled": true,
-        "accountNonExpired": true,
-        "credentialsNonExpired": true,
         "authorities": [
           {
             "authority": "string"
           }
         ],
-        "accountNonLocked": true
+        "accountNonLocked": true,
+        "credentialsNonExpired": true,
+        "accountNonExpired": true
       },
       "id": 0
     },
@@ -1425,14 +1425,14 @@ const inputBody = '{
     "username": "string",
     "password": "string",
     "enabled": true,
-    "accountNonExpired": true,
-    "credentialsNonExpired": true,
     "authorities": [
       {
         "authority": "string"
       }
     ],
-    "accountNonLocked": true
+    "accountNonLocked": true,
+    "credentialsNonExpired": true,
+    "accountNonExpired": true
   },
   "id": 0
 }';
@@ -1576,14 +1576,14 @@ func main() {
     "username": "string",
     "password": "string",
     "enabled": true,
-    "accountNonExpired": true,
-    "credentialsNonExpired": true,
     "authorities": [
       {
         "authority": "string"
       }
     ],
-    "accountNonLocked": true
+    "accountNonLocked": true,
+    "credentialsNonExpired": true,
+    "accountNonExpired": true
   },
   "id": 0
 }
@@ -1967,14 +1967,14 @@ const inputBody = '{
     "username": "string",
     "password": "string",
     "enabled": true,
-    "accountNonExpired": true,
-    "credentialsNonExpired": true,
     "authorities": [
       {
         "authority": "string"
       }
     ],
-    "accountNonLocked": true
+    "accountNonLocked": true,
+    "credentialsNonExpired": true,
+    "accountNonExpired": true
   },
   "id": 0
 }';
@@ -2123,14 +2123,14 @@ func main() {
     "username": "string",
     "password": "string",
     "enabled": true,
-    "accountNonExpired": true,
-    "credentialsNonExpired": true,
     "authorities": [
       {
         "authority": "string"
       }
     ],
-    "accountNonLocked": true
+    "accountNonLocked": true,
+    "credentialsNonExpired": true,
+    "accountNonExpired": true
   },
   "id": 0
 }
@@ -3180,7 +3180,7 @@ func main() {
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[BillingAccount](#schemabillingaccount)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[BillingAccountDTO](#schemabillingaccountdto)|
 
 <aside class="success">
 This operation does not require authentication
@@ -3667,24 +3667,13 @@ Status Code **200**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[[BillingAccount](#schemabillingaccount)]|false|none|none|
-|» customer|[Customer](#schemacustomer)|false|none|none|
+|*anonymous*|[[BillingAccountDTO](#schemabillingaccountdto)]|false|none|none|
+|» id|integer(int32)|false|none|none|
+|» customer|[CustomerBasicDTO](#schemacustomerbasicdto)|false|none|none|
+|»» id|integer(int32)|false|none|none|
 |»» firstName|string|false|none|none|
 |»» lastName|string|false|none|none|
-|»» nationalId|string|false|none|none|
-|»» phoneNo|string|false|none|none|
 |»» email|string|false|none|none|
-|»» user|[User](#schemauser)|false|none|none|
-|»»» id|integer(int32)|false|none|none|
-|»»» username|string|false|none|none|
-|»»» password|string|false|none|none|
-|»»» enabled|boolean|false|none|none|
-|»»» accountNonExpired|boolean|false|none|none|
-|»»» credentialsNonExpired|boolean|false|none|none|
-|»»» authorities|[[GrantedAuthority](#schemagrantedauthority)]|false|none|none|
-|»»»» authority|string|false|none|none|
-|»»» accountNonLocked|boolean|false|none|none|
-|»» id|integer(int32)|false|none|none|
 |» address|[BillingAddress](#schemabillingaddress)|false|none|none|
 |»» id|integer(int32)|false|none|none|
 |»» street|string|false|none|none|
@@ -3694,12 +3683,10 @@ Status Code **200**
 |»» doorNo|integer(int32)|false|none|none|
 |»» city|string|false|none|none|
 |»» country|string|false|none|none|
-|» invoices|[[Invoice](#schemainvoice)]|false|none|none|
+|» invoices|[[InvoiceDTO](#schemainvoicedto)]|false|none|none|
 |»» invoiceId|integer(int32)|false|none|none|
 |»» totalCost|number(double)|false|none|none|
-|»» date|string(date)|false|none|none|
-|»» account|[BillingAccount](#schemabillingaccount)|false|none|none|
-|» id|integer(int32)|false|none|none|
+|»» date|string|false|none|none|
 
 <aside class="success">
 This operation does not require authentication
@@ -3917,14 +3904,14 @@ const inputBody = '{
   "username": "string",
   "password": "string",
   "enabled": true,
-  "accountNonExpired": true,
-  "credentialsNonExpired": true,
   "authorities": [
     {
       "authority": "string"
     }
   ],
-  "accountNonLocked": true
+  "accountNonLocked": true,
+  "credentialsNonExpired": true,
+  "accountNonExpired": true
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -4060,14 +4047,14 @@ func main() {
   "username": "string",
   "password": "string",
   "enabled": true,
-  "accountNonExpired": true,
-  "credentialsNonExpired": true,
   "authorities": [
     {
       "authority": "string"
     }
   ],
-  "accountNonLocked": true
+  "accountNonLocked": true,
+  "credentialsNonExpired": true,
+  "accountNonExpired": true
 }
 ```
 
@@ -4466,14 +4453,14 @@ This operation does not require authentication
       "username": "string",
       "password": "string",
       "enabled": true,
-      "accountNonExpired": true,
-      "credentialsNonExpired": true,
       "authorities": [
         {
           "authority": "string"
         }
       ],
-      "accountNonLocked": true
+      "accountNonLocked": true,
+      "credentialsNonExpired": true,
+      "accountNonExpired": true
     },
     "id": 0
   },
@@ -4504,14 +4491,14 @@ This operation does not require authentication
             "username": "string",
             "password": "string",
             "enabled": true,
-            "accountNonExpired": true,
-            "credentialsNonExpired": true,
             "authorities": [
               {
                 "authority": "string"
               }
             ],
-            "accountNonLocked": true
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "accountNonExpired": true
           },
           "id": 0
         },
@@ -4597,14 +4584,14 @@ This operation does not require authentication
     "username": "string",
     "password": "string",
     "enabled": true,
-    "accountNonExpired": true,
-    "credentialsNonExpired": true,
     "authorities": [
       {
         "authority": "string"
       }
     ],
-    "accountNonLocked": true
+    "accountNonLocked": true,
+    "credentialsNonExpired": true,
+    "accountNonExpired": true
   },
   "id": 0
 }
@@ -4667,14 +4654,14 @@ This operation does not require authentication
         "username": "string",
         "password": "string",
         "enabled": true,
-        "accountNonExpired": true,
-        "credentialsNonExpired": true,
         "authorities": [
           {
             "authority": "string"
           }
         ],
-        "accountNonLocked": true
+        "accountNonLocked": true,
+        "credentialsNonExpired": true,
+        "accountNonExpired": true
       },
       "id": 0
     },
@@ -4724,14 +4711,14 @@ This operation does not require authentication
   "username": "string",
   "password": "string",
   "enabled": true,
-  "accountNonExpired": true,
-  "credentialsNonExpired": true,
   "authorities": [
     {
       "authority": "string"
     }
   ],
-  "accountNonLocked": true
+  "accountNonLocked": true,
+  "credentialsNonExpired": true,
+  "accountNonExpired": true
 }
 
 ```
@@ -4744,10 +4731,10 @@ This operation does not require authentication
 |username|string|false|none|none|
 |password|string|false|none|none|
 |enabled|boolean|false|none|none|
-|accountNonExpired|boolean|false|none|none|
-|credentialsNonExpired|boolean|false|none|none|
 |authorities|[[GrantedAuthority](#schemagrantedauthority)]|false|none|none|
 |accountNonLocked|boolean|false|none|none|
+|credentialsNonExpired|boolean|false|none|none|
+|accountNonExpired|boolean|false|none|none|
 
 <h2 id="tocS_CustomerDTO">CustomerDTO</h2>
 <!-- backwards compatibility -->
@@ -4846,4 +4833,100 @@ This operation does not require authentication
 |---|---|---|---|---|
 |customerId|integer(int32)|false|none|none|
 |addressId|integer(int32)|false|none|none|
+
+<h2 id="tocS_BillingAccountDTO">BillingAccountDTO</h2>
+<!-- backwards compatibility -->
+<a id="schemabillingaccountdto"></a>
+<a id="schema_BillingAccountDTO"></a>
+<a id="tocSbillingaccountdto"></a>
+<a id="tocsbillingaccountdto"></a>
+
+```json
+{
+  "id": 0,
+  "customer": {
+    "id": 0,
+    "firstName": "string",
+    "lastName": "string",
+    "email": "string"
+  },
+  "address": {
+    "id": 0,
+    "street": "string",
+    "avenue": "string",
+    "postalCode": 0,
+    "buildingNo": 0,
+    "doorNo": 0,
+    "city": "string",
+    "country": "string"
+  },
+  "invoices": [
+    {
+      "invoiceId": 0,
+      "totalCost": 0.1,
+      "date": "string"
+    }
+  ]
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|id|integer(int32)|false|none|none|
+|customer|[CustomerBasicDTO](#schemacustomerbasicdto)|false|none|none|
+|address|[BillingAddress](#schemabillingaddress)|false|none|none|
+|invoices|[[InvoiceDTO](#schemainvoicedto)]|false|none|none|
+
+<h2 id="tocS_CustomerBasicDTO">CustomerBasicDTO</h2>
+<!-- backwards compatibility -->
+<a id="schemacustomerbasicdto"></a>
+<a id="schema_CustomerBasicDTO"></a>
+<a id="tocScustomerbasicdto"></a>
+<a id="tocscustomerbasicdto"></a>
+
+```json
+{
+  "id": 0,
+  "firstName": "string",
+  "lastName": "string",
+  "email": "string"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|id|integer(int32)|false|none|none|
+|firstName|string|false|none|none|
+|lastName|string|false|none|none|
+|email|string|false|none|none|
+
+<h2 id="tocS_InvoiceDTO">InvoiceDTO</h2>
+<!-- backwards compatibility -->
+<a id="schemainvoicedto"></a>
+<a id="schema_InvoiceDTO"></a>
+<a id="tocSinvoicedto"></a>
+<a id="tocsinvoicedto"></a>
+
+```json
+{
+  "invoiceId": 0,
+  "totalCost": 0.1,
+  "date": "string"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|invoiceId|integer(int32)|false|none|none|
+|totalCost|number(double)|false|none|none|
+|date|string|false|none|none|
 
